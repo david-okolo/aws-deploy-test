@@ -5,7 +5,7 @@ class Singleton
 
     static instance: Singleton;
 
-    singletonEmitter: EventEmitter;
+    private singletonEmitter: EventEmitter;
 
     private data: Array<string> = [];
 
@@ -36,9 +36,9 @@ class Singleton
         this.singletonEmitter.emit(_event)
     }
 
-    addEventListener(_event: string,  listener: any)
+    addEventListener(_event: string, listener: any)
     {
-        this.singletonEmitter.on(_event, listener)
+        this.singletonEmitter.addListener(_event, listener)
     }
 }
 
