@@ -5,7 +5,7 @@ services:
     environment:
       - MONGODBURI=store
     volumes:
-      - ./:/home/projects/emitter/
+      - ./:/home/projects/aws-deploy-test/
     ports:
       - "3000:3000"
     depends_on:

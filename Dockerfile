@@ -1,11 +1,10 @@
 FROM node:10.16.1
 
-WORKDIR /home/projects/emitter/sourcecode
+WORKDIR /home/projects/aws-deploy-test
 
 COPY . .
 
 RUN ["npm", "install"]
-RUN ["npm", "run", "build"]
 
 EXPOSE 3000
 
