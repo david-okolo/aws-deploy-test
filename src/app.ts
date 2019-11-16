@@ -4,7 +4,7 @@ import mongoose from "mongoose";
 const app = express();
 
 try {
-    mongoose.connect('mongodb://localhost:27018/myapp', {useNewUrlParser: true})
+    mongoose.connect(`mongodb://${process.env.MONGODBURI}:27017/myapp`, {useNewUrlParser: true})
 } catch (error) {
     console.log(error)
 }
@@ -15,19 +15,19 @@ mongoose.connection.on('connected', () => {
 
 const port: number = 3000;
 
+const user = new mongoose.Schema({
+    name: String
+});
+
+const userModel = mongoose.model('user', user);
+
 app.get('/', (request, response) => {
-
-    const user = new mongoose.Schema({
-        name: String
-    });
-
-    const userModel = mongoose.model('user', user);
 
     userModel.create({
         name: 'David'
     });
-    
-    response.send('Me');
+
+    response.send('Me twice!!!!');
 })
 
 app.listen(port, ()=>{
